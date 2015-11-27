@@ -1,0 +1,439 @@
+swagger: '2.0'
+info:
+  title:  Events API
+  description: Events API
+  version: 1.0.0
+  contact:
+    name: Dwight Egerton
+    email: dwight.egerton@ellucian.com
+    url: 'http://www.ellucian.com/'
+
+host: quercus.campusit.net
+basePath: /api
+
+tags:
+  - name: Events
+    description: Services/Definitions related to the management of Events
+
+schemes:
+  - https
+
+paths:
+  '/events':
+    get:
+      tags:
+        - Events
+      summary: Summary of the event queues and preferences
+      operationId: getSummary
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved the events summary
+          schema:
+            $ref: '#/definitions/Response(Events)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to retrieve the events summary
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to retrieve the events summary
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to retrieve the events summary
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+    put:
+      tags:
+        - Events
+      summary: Update events settings
+      operationId: updateSettings
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Request(Events)'
+      responses:
+        '200':
+          description: Successfully updated the events queues and/or preferences
+          schema:
+            $ref: '#/definitions/Response(Events)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to update the events queues and/or preferences
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to update the events queues and/or preferences
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to update the events queues and/or preferences
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+    delete:
+      tags:
+        - Events
+      summary: Clear all event queues
+      operationId: clearAllQueues
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successfully cleared all the events queues
+          schema:
+            $ref: '#/definitions/Response(Events)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to clear the events queues
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to clear the events queues
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to clear the events queues
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+  '/events/{queue}':
+    get:
+      tags:
+        - Events
+      summary: Retrieve the next available message from the respective queue
+      operationId: getNextMessage
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: queue
+          description: Name of the queue to retrieve the message from
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+        - name: receipted
+          description: Indicate if the message needs to be receipted (confirmed delivery)
+          in: query
+          required: false
+          default: false
+          type: boolean
+      responses:
+        '200':
+          description: Successfully retrieved a message from the queue
+          schema:
+            $ref: '#/definitions/Response(Queue)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to retrieve a message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to retrieve a message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '404':
+          description: Nothing found message queue is empty
+          schema:
+            $ref: '#/definitions/Response(Queue)'
+        '500':
+          description: System error when trying to retrieve a message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+    delete:
+      tags:
+        - Events
+      summary: Clear all messages from the respective queue
+      operationId: clearQueue
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: queue
+          description: Name of the queue to clear the messages from
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successfully cleared all messages from the queue
+          schema:
+            $ref: '#/definitions/Response(Queue)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to clear messages from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to clear messages from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to clear messages from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+  '/events/{queue}/{id}':
+    get:
+      tags:
+        - Events
+      summary: Retrieve a message from the queue using the message unique identifier
+      operationId: getMessage
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: queue
+          description: Name of the queue to retrieve the message from
+          in: path
+          required: true
+          type: string
+        - name: id
+          description: Unique message reference identifier
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+        - name: receipt
+          description: The message receipt token (if applicable)
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successfully retreived the message from the queue
+          schema:
+            $ref: '#/definitions/Response(Message)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to retrieve a message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to retrieve a message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '404':
+          description: Nothing found message not in the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to retrieve a message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+    delete:
+      tags:
+        - Events
+      summary: Receipt a message in the queue to confirm delivery
+      operationId: receiptMessage
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: queue
+          description: Name of the queue to retrieve the message from
+          in: path
+          required: true
+          type: string
+        - name: id
+          description: Unique message reference identifier
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+        - name: receipt
+          description: The message receipt token
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successfully removed the message in the queue
+          schema:
+            $ref: '#/definitions/Response(Message)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to remove the message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to remove the message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+        '404':
+          description: Nothing found message not in the queue
+          schema:
+            $ref: '#/definitions/Response(Queue)'
+        '500':
+          description: System error when trying to remove the message from the queue
+          schema:
+            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+definitions:
+  Element(Message):
+    description: Message definition
+    required:
+      - id
+      - timestamp
+      - reference
+    properties:
+      id:
+        description: Unique identifier
+        type: string
+      timestamp:
+        description: Date timestamp
+        type: string
+        format: date
+      reference:
+        description: Reference URL to source
+        type: string
+      receipt:
+        description: Receipt token used to confirm delivery
+        type: string
+  Element(Preference):
+    description: Preference definition
+    required:
+      - name
+      - value
+    properties:
+      name:
+        description: System name
+        type: string
+      description:
+        description: Descriptive name
+        type: string
+      value:
+        description: Current value
+        type: string
+      options:
+        description: Available value options
+        type: array
+        items:
+          type: string
+  Element(Queue):
+    description: Queue definition
+    required:
+      - enabled
+      - name
+    properties:
+      enabled:
+        description: Is enabled
+        type: boolean
+        default: false
+      name:
+        description: System name
+        type: string
+      description:
+        description: Descriptive name
+        type: string
+      messages:
+        description: Currently queued messages
+        type: integer
+        format: int32
+  Element(Response):
+    description: Response definition
+    required:
+      - status
+      - message
+    properties:
+      status:
+        description: Status code
+        type: integer
+        format: int32
+      message:
+        description: Message relating to the response
+        type: string
+  Request(Events):
+    description: Events Summary update request
+    properties:
+      preferences:
+        description: List of preferences
+        type: array
+        items:
+          $ref: '#/definitions/Element(Preference)'
+      queues:
+        description: List of queues
+        type: array
+        items:
+          $ref: '#/definitions/Element(Queue)'
+  Response(Events):
+    description: Events Summary response
+    required:
+      - preferences
+      - queues
+      - response
+    properties:
+      response:
+        description: Response definition
+        $ref: '#/definitions/Element(Response)'
+      preferences:
+        description: List of preferences
+        type: array
+        items:
+          $ref: '#/definitions/Element(Preference)'
+      queues:
+        description: List of queues
+        type: array
+        items:
+          $ref: '#/definitions/Element(Queue)'
+  Response(Message):
+    description: Message response
+    required:
+      - response
+      - message
+    properties:
+      response:
+        description: Response definition
+        $ref: '#/definitions/Element(Response)'
+      message:
+        description: Message definition
+        $ref: '#/definitions/Element(Message)'
+  Response(Queue):
+    required:
+      - response
+      - queue
+    properties:
+      response:
+        description: Events Response
+        $ref: '#/definitions/Element(Response)'
+      queue:
+        description: Current event queue
+        $ref: '#/definitions/Element(Queue)'
+      message:
+        description: Message from the queue
+        $ref: '#/definitions/Element(Message)'
+    description: Message from the queue
