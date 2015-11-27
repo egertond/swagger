@@ -1,25 +1,21 @@
 swagger: '2.0'
 info:
-  title:  Events API
+  title: Events API
   description: Events API
   version: 1.0.0
   contact:
     name: Dwight Egerton
     email: dwight.egerton@ellucian.com
     url: 'http://www.ellucian.com/'
-
 host: quercus.campusit.net
 basePath: /api
-
 tags:
   - name: Events
     description: Services/Definitions related to the management of Events
-
 schemes:
   - https
-
 paths:
-  '/events':
+  /events:
     get:
       tags:
         - Events
@@ -386,7 +382,7 @@ definitions:
     properties:
       response:
         description: Response definition
-        $ref: '#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       preferences:
         description: List of preferences
         type: array
@@ -405,7 +401,7 @@ definitions:
     properties:
       response:
         description: Response definition
-        $ref: '#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       message:
         description: Message definition
         $ref: '#/definitions/Element(Message)'
@@ -416,7 +412,7 @@ definitions:
     properties:
       response:
         description: Events Response
-        $ref: '#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       queue:
         description: Current event queue
         $ref: '#/definitions/Element(Queue)'
