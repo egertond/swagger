@@ -42,15 +42,15 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to retrieve the events summary
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to retrieve the events summary
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to retrieve the events summary
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     put:
       tags:
         - Events
@@ -79,15 +79,15 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to update the events queues and/or preferences
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to update the events queues and/or preferences
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to update the events queues and/or preferences
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     delete:
       tags:
         - Events
@@ -110,15 +110,15 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to clear the events queues
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to clear the events queues
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to clear the events queues
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
   '/events/{queue}':
     get:
       tags:
@@ -153,11 +153,11 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to retrieve a message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to retrieve a message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '404':
           description: Nothing found message queue is empty
           schema:
@@ -165,7 +165,7 @@ paths:
         '500':
           description: System error when trying to retrieve a message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     delete:
       tags:
         - Events
@@ -193,15 +193,15 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to clear messages from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to clear messages from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to clear messages from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
   '/events/{queue}/{id}':
     get:
       tags:
@@ -240,19 +240,19 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to retrieve a message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to retrieve a message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '404':
           description: Nothing found message not in the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to retrieve a message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     delete:
       tags:
         - Events
@@ -290,11 +290,11 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to remove the message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to remove the message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '404':
           description: Nothing found message not in the queue
           schema:
@@ -302,7 +302,7 @@ paths:
         '500':
           description: System error when trying to remove the message from the queue
           schema:
-            $ref: 'https://api.swaggerhub.com/apis/degerton/Elevate_Quercus_Program_API/1.0.0/swagger.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
 definitions:
   Element(Message):
     description: Message definition
@@ -364,19 +364,6 @@ definitions:
         description: Currently queued messages
         type: integer
         format: int32
-  Element(Response):
-    description: Response definition
-    required:
-      - status
-      - message
-    properties:
-      status:
-        description: Status code
-        type: integer
-        format: int32
-      message:
-        description: Message relating to the response
-        type: string
   Request(Events):
     description: Events Summary update request
     properties:
