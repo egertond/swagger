@@ -1,0 +1,55 @@
+swagger: '2.0'
+
+info:
+  title: Ellucian Elevate/Quercus Common API
+  description: Ellucian Elevate/Quercus Common API
+  version: 1.0.0
+  contact:
+    name: Dwight Egerton
+    email: dwight.egerton@ellucian.com
+    url: www.ellucian.com
+
+host: quercus.campusit.net
+basePath: /api
+
+tags:
+  - name: Common
+    description: Services/Definitions related to Common
+
+schemes:
+  - https
+
+paths: {}
+
+definitions:
+  Element(Response):
+    description: Response definition
+    required:
+      - status
+      - message
+    properties:
+      status:
+        description: Status code
+        type: integer
+        format: int32
+      message:
+        description: Message relating to the response
+        type: string
+
+  Response(Failed):
+    description: Failed response
+    required:
+      - response
+    properties:
+      response:
+        description: Description of the response
+        $ref: '#/definitions/Element(Response)'
+
+  Response(Success):
+    description: Program response
+    required:
+      - response
+    properties:
+      response:
+        description: Description of the response
+        $ref: '#/definitions/Element(Response)'
