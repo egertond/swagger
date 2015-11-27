@@ -1,12 +1,12 @@
 swagger: '2.0'
 info:
-  title: Ellucian Elevate/Quercus Program API
-  description: Ellucian Elevate/Quercus Program API
+  title: Program API
+  description: Program API
   version: 1.0.0
   contact:
     name: Dwight Egerton
     email: dwight.egerton@ellucian.com
-    url: www.ellucian.com
+    url: 'http://www.ellucian.com'
 host: quercus.campusit.net
 basePath: /api
 tags:
@@ -38,15 +38,15 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to retrieve the programs summary
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to retrieve the programs summary
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to retrieve the programs summary
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     post:
       summary: Create new program
       operationId: createProgram
@@ -75,15 +75,15 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to update the programs queues and/or preferences
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to update the programs queues and/or preferences
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to update the programs queues and/or preferences
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
   '/programs/{id}':
     get:
       summary: Retrieve a program using the unique identifier
@@ -112,19 +112,19 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to retrieve the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to retrieve the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '404':
           description: Nothing found no matching program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to retrieve the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     put:
       summary: Update a program using the unique identifier
       operationId: updateProgram
@@ -158,19 +158,19 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to update the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to update the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '404':
           description: Nothing found no matching program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to update the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
     delete:
       summary: Remove a program using the unique identifier
       operationId: removeProgram
@@ -198,19 +198,19 @@ paths:
         '401':
           description: Unauthorised need to provided authentication before being able to remove the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '403':
           description: Forbidden access to remove the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '404':
           description: Nothing found no matching program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to remove the program
           schema:
-            $ref: '#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
 definitions:
   Element(Program):
     description: Program definition
@@ -227,19 +227,6 @@ definitions:
         type: string
         format: guid
         pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
-  Element(Response):
-    description: Response definition
-    required:
-      - status
-      - message
-    properties:
-      status:
-        description: Status code
-        type: integer
-        format: int32
-      message:
-        description: Message relating to the response
-        type: string
   Request(Program):
     description: Program request
     required:
@@ -248,14 +235,6 @@ definitions:
       program:
         description: Description of the program
         $ref: '#/definitions/Element(Program)'
-  Response(Failed):
-    description: Failed response
-    required:
-      - response
-    properties:
-      response:
-        description: Description of the response
-        $ref: '#/definitions/Element(Response)'
   Response(Program):
     description: Program response
     required:
@@ -263,7 +242,7 @@ definitions:
     properties:
       response:
         description: Description of the response
-        $ref: '#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       program:
         description: Description of the program
         $ref: '#/definitions/Element(Program)'
@@ -275,7 +254,7 @@ definitions:
     properties:
       response:
         description: Description of the response
-        $ref: '#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       programs:
         description: List of matching available programs
-        $ref: '#/definitions/Element(Response)'
+        $ref: '#/definitions/Element(Program)'
