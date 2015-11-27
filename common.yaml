@@ -14,7 +14,7 @@ basePath: /api
 
 tags:
   - name: Common
-    description: Services/Definitions related to Common
+    description: Common API Services/Definitions
 
 schemes:
   - https
