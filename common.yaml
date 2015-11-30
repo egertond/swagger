@@ -16,14 +16,6 @@ schemes:
   - https
 paths: {}
 definitions:
-  Element(Metadata):
-    description: Metadata definition
-    required:
-      - createdBy
-    properties:
-      createdBy:
-        description: Created By
-        type: string
   Element(Response):
     description: Response definition
     required:
@@ -40,6 +32,14 @@ definitions:
         type: string
       url:
         description: Full URL path of the request
+        type: string
+  Element(Metadata):
+    description: Metadata definition
+    required:
+      - createdBy
+    properties:
+      createdBy:
+        description: Created By
         type: string
   Response(Failed):
     description: Failed response
