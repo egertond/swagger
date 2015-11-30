@@ -1,13 +1,13 @@
 swagger: '2.0'
 info:
-  title: Ellucian Elevate/Quercus Common API
-  description: Ellucian Elevate/Quercus Common API
+  title: Common API
+  description: Common API
   version: 1.0.0
   contact:
     name: Dwight Egerton
     email: dwight.egerton@ellucian.com
     url: www.ellucian.com
-host: quercus.campusit.net
+host: elevate.ellucian.com
 basePath: /api
 tags:
   - name: Common
