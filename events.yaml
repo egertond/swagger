@@ -25,28 +25,19 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
       responses:
         '200':
-          description: Successfully retrieved the events summary
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Events)'
+            $ref: '#/definitions/Response(events)'
         '401':
-          description: Unauthorised need to provided authentication before being able to retrieve the events summary
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to retrieve the events summary
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '500':
-          description: System error when trying to retrieve the events summary
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
     put:
       tags:
         - Events
@@ -57,33 +48,20 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
-        - name: body
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Request(Events)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: '#/parameters/Body(events)'
       responses:
         '200':
-          description: Successfully updated the events queues and/or preferences
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Events)'
+            $ref: '#/definitions/Response(events)'
         '401':
-          description: Unauthorised need to provided authentication before being able to update the events queues and/or preferences
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to update the events queues and/or preferences
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '500':
-          description: System error when trying to update the events queues and/or preferences
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
     delete:
       tags:
         - Events
@@ -93,28 +71,19 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
       responses:
         '200':
-          description: Successfully cleared all the events queues
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Events)'
+            $ref: '#/definitions/Response(events)'
         '401':
-          description: Unauthorised need to provided authentication before being able to clear the events queues
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to clear the events queues
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '500':
-          description: System error when trying to clear the events queues
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
   '/events/{queue}':
     get:
       tags:
@@ -125,43 +94,25 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: queue
-          description: Name of the queue to retrieve the message from
-          in: path
-          required: true
-          type: string
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
-        - name: receipted
-          description: Indicate if the message needs to be receipted (confirmed delivery)
-          in: query
-          required: false
-          default: false
-          type: boolean
+        - $ref: '#/parameters/Path(queue)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: '#/parameters/Query(receipted)'
       responses:
         '200':
-          description: Successfully retrieved a message from the queue
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Queue)'
+            $ref: '#/definitions/Response(queue)'
         '401':
-          description: Unauthorised need to provided authentication before being able to retrieve a message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to retrieve a message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '404':
-          description: Nothing found message queue is empty
+          description: No matching record was found
           schema:
-            $ref: '#/definitions/Response(Queue)'
+            $ref: '#/definitions/Response(queue)'
         '500':
-          description: System error when trying to retrieve a message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
     delete:
       tags:
         - Events
@@ -171,33 +122,20 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: queue
-          description: Name of the queue to clear the messages from
-          in: path
-          required: true
-          type: string
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
+        - $ref: '#/parameters/Path(queue)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
       responses:
         '200':
-          description: Successfully cleared all messages from the queue
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Queue)'
+            $ref: '#/definitions/Response(queue)'
         '401':
-          description: Unauthorised need to provided authentication before being able to clear messages from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to clear messages from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '500':
-          description: System error when trying to clear messages from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
   '/events/{queue}/{id}':
     get:
       tags:
@@ -208,47 +146,24 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: queue
-          description: Name of the queue to retrieve the message from
-          in: path
-          required: true
-          type: string
-        - name: id
-          description: Unique message reference identifier
-          in: path
-          required: true
-          type: string
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
-        - name: receipt
-          description: The message receipt token (if applicable)
-          in: query
-          required: false
-          type: string
+        - $ref: '#/parameters/Path(queue)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: '#/parameters/Query(receipt)'
       responses:
         '200':
-          description: Successfully retreived the message from the queue
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Message)'
+            $ref: '#/definitions/Response(message)'
         '401':
-          description: Unauthorised need to provided authentication before being able to retrieve a message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to retrieve a message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '404':
-          description: Nothing found message not in the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/NotFound(404)'
         '500':
-          description: System error when trying to retrieve a message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
     delete:
       tags:
         - Events
@@ -258,49 +173,26 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: queue
-          description: Name of the queue to retrieve the message from
-          in: path
-          required: true
-          type: string
-        - name: id
-          description: Unique message reference identifier
-          in: path
-          required: true
-          type: string
-        - name: auth
-          description: Authentication token passed by calling service when not using the standard security
-          in: query
-          required: false
-          type: string
-        - name: receipt
-          description: The message receipt token
-          in: query
-          required: true
-          type: string
+        - $ref: '#/parameters/Path(queue)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: '#/parameters/Query(receipt)'
       responses:
         '200':
-          description: Successfully removed the message in the queue
+          description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Message)'
+            $ref: '#/definitions/Response(success)'
         '401':
-          description: Unauthorised need to provided authentication before being able to remove the message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
         '403':
-          description: Forbidden access to remove the message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
         '404':
-          description: Nothing found message not in the queue
-          schema:
-            $ref: '#/definitions/Response(Queue)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/NotFound(404)'
         '500':
-          description: System error when trying to remove the message from the queue
-          schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
 definitions:
-  Element(Message):
+  Element(message):
     description: Message definition
     required:
       - id
@@ -320,7 +212,7 @@ definitions:
       receipt:
         description: Receipt token used to confirm delivery
         type: string
-  Element(Preference):
+  Element(preference):
     description: Preference definition
     required:
       - name
@@ -340,7 +232,7 @@ definitions:
         type: array
         items:
           type: string
-  Element(Queue):
+  Element(queue):
     description: Queue definition
     required:
       - enabled
@@ -360,20 +252,20 @@ definitions:
         description: Currently queued messages
         type: integer
         format: int32
-  Request(Events):
+  Request(events):
     description: Events Summary update request
     properties:
       preferences:
         description: List of preferences
         type: array
         items:
-          $ref: '#/definitions/Element(Preference)'
+          $ref: '#/definitions/Element(preference)'
       queues:
         description: List of queues
         type: array
         items:
-          $ref: '#/definitions/Element(Queue)'
-  Response(Events):
+          $ref: '#/definitions/Element(queue)'
+  Response(events):
     description: Events Summary response
     required:
       - preferences
@@ -382,18 +274,18 @@ definitions:
     properties:
       response:
         description: Response definition
-        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(response)'
       preferences:
         description: List of preferences
         type: array
         items:
-          $ref: '#/definitions/Element(Preference)'
+          $ref: '#/definitions/Element(preference)'
       queues:
         description: List of queues
         type: array
         items:
-          $ref: '#/definitions/Element(Queue)'
-  Response(Message):
+          $ref: '#/definitions/Element(queue)'
+  Response(message):
     description: Message response
     required:
       - response
@@ -401,22 +293,48 @@ definitions:
     properties:
       response:
         description: Response definition
-        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(response)'
       message:
         description: Message definition
-        $ref: '#/definitions/Element(Message)'
-  Response(Queue):
+        $ref: '#/definitions/Element(message)'
+  Response(queue):
     required:
       - response
       - queue
     properties:
       response:
         description: Events Response
-        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(response)'
       queue:
         description: Current event queue
-        $ref: '#/definitions/Element(Queue)'
+        $ref: '#/definitions/Element(queue)'
       message:
         description: Message from the queue
-        $ref: '#/definitions/Element(Message)'
+        $ref: '#/definitions/Element(message)'
     description: Message from the queue
+parameters:
+  Path(queue):
+    name: queue
+    description: Queue reference
+    in: path
+    required: true
+    type: string
+  Body(events):
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/Request(events)'
+  Query(receipted):
+    name: receipted
+    description: Indicate if the message needs to be receipted (confirmed delivery)
+    in: query
+    required: false
+    default: false
+    type: boolean
+  Query(receipt):
+    name: receipt
+    description: The message receipt token
+    in: query
+    required: true
+    type: string
