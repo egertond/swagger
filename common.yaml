@@ -18,7 +18,7 @@ paths: {}
 definitions:
   Element(Base):
     description: Base definition
-    discriminator: guid,
+    discriminator: guid
     type: object
     properties:
       metadata:
