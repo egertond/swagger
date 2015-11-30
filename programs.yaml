@@ -47,11 +47,240 @@ paths:
           description: System error when trying to retrieve the programs summary
           schema:
             $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+    post:
+      summary: Create new program
+      operationId: createProgram
+      tags:
+        - Programs
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Request(Program)'
+      responses:
+        '200':
+          description: Successfully updated the programs queues and/or preferences
+          schema:
+            $ref: '#/definitions/Response(Program)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to update the programs queues and/or preferences
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to update the programs queues and/or preferences
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to update the programs queues and/or preferences
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+  '/programs/{id}':
+    get:
+      summary: Retrieve a program using the unique identifier
+      operationId: getProgram
+      tags:
+        - Programs
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: The program unique identifier
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved the program
+          schema:
+            $ref: '#/definitions/Response(Program)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to retrieve the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to retrieve the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '404':
+          description: Nothing found no matching program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to retrieve the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+    put:
+      summary: Update a program using the unique identifier
+      operationId: updateProgram
+      tags:
+        - Programs
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: The program unique identifier
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Request(Program)'
+      responses:
+        '200':
+          description: Successfully updated the program
+          schema:
+            $ref: '#/definitions/Response(Program)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to update the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to update the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '404':
+          description: Nothing found no matching program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to update the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+    delete:
+      summary: Remove a program using the unique identifier
+      operationId: removeProgram
+      tags:
+        - Programs
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: The program unique identifier
+          in: path
+          required: true
+          type: string
+        - name: auth
+          description: Authentication token passed by calling service when not using the standard security
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successfully removed the program
+          schema:
+            $ref: '#/definitions/Response(Program)'
+        '401':
+          description: Unauthorised need to provided authentication before being able to remove the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '403':
+          description: Forbidden access to remove the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+        '404':
+          description: Nothing found no matching program
+          schema:
+            $ref: 'common.yaml#/definitions/Response(Failed)'
+        '500':
+          description: System error when trying to remove the program
+          schema:
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Metadata)'
 definitions:
+  Element(ProgramFull):
+    description: Program definition
+    type: object
+    allOf:
+      - $ref: '#/definitions/Element(ProgramSmry)'
+      - properties:
+          approved:
+            description: Date approved
+            type: string
+            format: datetime
+          closed:
+            description: Date closed
+            type: string
+            format: datetime
+          department:
+            description: Department code
+            type: integer
+            format: int32
+          departmentDescription:
+            description: Department description
+            type: string
+            readOnly: true
   Element(ProgramSmry):
     description: Program definition
+    type: object
     allOf:
       - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Base)'
+      - properties:
+          code:
+            description: Program code
+            type: string
+            pattern: '^[a-zA-Z0-9]{16}$'
+          description:
+            description: Program description
+            type: string
+            maxLength: 80
+          status:
+            description: Status
+            type: integer
+            format: int32
+          statusDescription:
+            description: Status description
+            type: string
+            readOnly: true
+        required:
+          - code
+  Request(Program):
+    description: Program request
+    type: object
+    allOf:
+      - properties:
+          program:
+            description: Description of the program
+            $ref: '#/definitions/Element(ProgramFull)'
+        required:
+          - program
+  Response(Program):
+    description: Program response
+    type: object
+    allOf:
+      - properties:
+          response:
+            description: Description of the response
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
+          program:
+            description: Description of the program
+            $ref: '#/definitions/Element(ProgramFull)'
+        required:
+          - response
   Response(Programs):
     description: Programs response
     type: object
