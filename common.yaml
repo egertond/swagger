@@ -16,6 +16,49 @@ schemes:
   - https
 paths: {}
 definitions:
+  Element(Base):
+    description: Base definition
+    type: object
+    required:
+      - metadata
+      - guid
+      - id
+    properties:
+      metadata:
+        description: Object metadata
+        $ref: '#/definitions/Element(Metadata)'
+      guid:
+        description: Object global unique identifier (GUID)
+        type: string
+        format: guid
+        pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
+      id:
+        description: Object System unique identifier
+        type: string
+  Element(Metadata):
+    description: Metadata definition
+    type: object
+    required:
+      - modifiedOn
+    properties:
+      createdBy:
+        description: Created By
+        type: string
+      createdOn:
+        description: Created On
+        type: string
+        format: datetime
+      modifiedBy:
+        description: Modified By
+        type: string
+      modifiedOn:
+        description: Modified On
+        type: string
+        format: datetime
+      url:
+        description: Full URL path for the resource
+        type: string
+        pattern: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
   Element(Response):
     description: Response definition
     type: object
@@ -29,19 +72,6 @@ definitions:
         format: int32
       message:
         description: Message relating to the response
-        type: string
-  Element(Base):
-    description: Base definition
-    type: object
-    required:
-      - guid
-      - id
-    properties:
-      guid:
-        description: Object global unique identifier (GUID)
-        type: string
-      id:
-        description: Object System unique identifier
         type: string
   Response(Failed):
     description: Failed response
