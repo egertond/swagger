@@ -133,6 +133,10 @@ responses:
     description: Forbidden access to retrieve the requested information
     schema:
       $ref: '#/definitions/Response(Failed)'
+  NotFound(404):
+    description: No matching record was found
+    schema:
+      $ref: '#/definitions/Response(Failed)'
   Error(500):
     description: System error when trying to retrieve the requested information
     schema:
