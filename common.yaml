@@ -29,7 +29,7 @@ definitions:
         type: string
         readOnly: true
         format: guid
-        # pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
+        pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
       id:
         description: Object System unique identifier
         type: string
@@ -64,7 +64,7 @@ definitions:
         description: Full URL path for the resource
         type: string
         readOnly: true
-        # pattern: "(https?:\\/\\/(?:www\\.|(?!www))[^\\s\\.]+\\.[^\\s]{2,}|www\\.[^\\s]+\\.[^\\s]{2,})"
+        pattern: "(https?:\\/\\/(?:www\\.|(?!www))[^\\s\\.]+\\.[^\\s]{2,}|www\\.[^\\s]+\\.[^\\s]{2,})"
     required:
       - modifiedOn
   Element(Response):
@@ -101,6 +101,21 @@ definitions:
         $ref: '#/definitions/Element(Response)'
     required:
       - response
+
+parameters:
+  auth:
+    name: auth
+    description: Authentication token passed in
+    in: query
+    required: false
+    type: string
+  id:
+    name: id
+    description: Object unique identifier reference
+    in: path
+    required: true
+    type: string
+
 responses:
   '200':
     description: Successfully process the request
