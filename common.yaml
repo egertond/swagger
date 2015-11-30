@@ -87,7 +87,7 @@ definitions:
       - response
     properties:
       response:
-        description: Description of the response
+        description: Status of the response
         $ref: '#/definitions/Element(Response)'
   Response(Success):
     description: Successful response
@@ -96,8 +96,11 @@ definitions:
       - response
     properties:
       response:
-        description: Description of the response
+        description: Status of the response
         $ref: '#/definitions/Element(Response)'
+      metadata:
+        description: Metadata about the object/request
+        $ref: '#/definitions/Element(Metadata)'
 parameters:
   Path(id):
     name: id
