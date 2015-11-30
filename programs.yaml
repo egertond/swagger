@@ -212,54 +212,52 @@ paths:
           schema:
             $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Metadata)'
 definitions:
-  Element(ProgramSmry):
-    description: Program definition
-    type: object
-    required:
-      - code
-    properties:
-      code:
-        description: Program code
-        type: string
-        pattern: '^[a-zA-Z0-9]{16}$'
-      description:
-        description: Program description
-        type: string
-        maxLength: 80
-      status:
-        description: Status
-        type: integer
-        format: int32
-      statusDescription:
-        description: Status description
-        type: string
-        readOnly: true
-    additionalProperties:
-      description: Inherited properties from the Base object
-      $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Base)'
   Element(ProgramFull):
     description: Program definition
     type: object
-    properties:
-      approved:
-        description: Date approved
-        type: string
-        format: datetime
-      closed:
-        description: Date closed
-        type: string
-        format: datetime
-      department:
-        description: Department code
-        type: integer
-        format: int32
-      departmentDescription:
-        description: Department description
-        type: string
-        readOnly: true
-    additionalProperties:
-      description: Inherited properties from the Program summary
-      $ref: '#/definitions/Element(ProgramSmry)'
+    allOf:
+      - $ref: '#/definitions/Element(ProgramSmry)'
+      - properties:
+          approved:
+            description: Date approved
+            type: string
+            format: datetime
+          closed:
+            description: Date closed
+            type: string
+            format: datetime
+          department:
+            description: Department code
+            type: integer
+            format: int32
+          departmentDescription:
+            description: Department description
+            type: string
+            readOnly: true
+  Element(ProgramSmry):
+    description: Program definition
+    type: object
+    allOf:
+      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Base)'
+      - required:
+          - code
+        properties:
+          code:
+            description: Program code
+            type: string
+            pattern: '^[a-zA-Z0-9]{16}$'
+          description:
+            description: Program description
+            type: string
+            maxLength: 80
+          status:
+            description: Status
+            type: integer
+            format: int32
+          statusDescription:
+            description: Status description
+            type: string
+            readOnly: true
   Request(Program):
     description: Program request
     type: object
