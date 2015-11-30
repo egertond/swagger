@@ -27,17 +27,17 @@ definitions:
       metadata:
         description: Object metadata
         $ref: '#/definitions/Element(Metadata)'
-        readonly: true
+        readOnly: true
       guid:
         description: Object global unique identifier (GUID)
         type: string
         format: guid
         pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
-        readonly: true
+        readOnly: true
       id:
         description: Object System unique identifier
         type: string
-        readonly: true
+        readOnly: true
   Element(Metadata):
     description: Metadata definition
     type: object
@@ -47,21 +47,21 @@ definitions:
       createdBy:
         description: Created By
         type: string
-        readonly: true
+        readOnly: true
       createdOn:
         description: Created On
         type: string
         format: datetime
-        readonly: true
+        readOnly: true
       modifiedBy:
         description: Modified By
         type: string
-        readonly: true
+        readOnly: true
       modifiedOn:
         description: Modified On
         type: string
         format: datetime
-        readonly: true
+        readOnly: true
       url:
         description: Full URL path for the resource
         type: string
