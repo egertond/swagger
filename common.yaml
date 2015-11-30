@@ -30,11 +30,13 @@ definitions:
       guid:
         description: Object global unique identifier (GUID)
         type: string
+        readOnly: true
         format: guid
         pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
       id:
         description: Object System unique identifier
         type: string
+        readOnly: true
   Element(Metadata):
     description: Metadata definition
     type: object
@@ -44,20 +46,25 @@ definitions:
       createdBy:
         description: Created By
         type: string
+        readOnly: true
       createdOn:
         description: Created On
         type: string
+        readOnly: true
         format: datetime
       modifiedBy:
         description: Modified By
         type: string
+        readOnly: true
       modifiedOn:
         description: Modified On
         type: string
+        readOnly: true
         format: datetime
       url:
         description: Full URL path for the resource
         type: string
+        readOnly: true
         pattern: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
   Element(Response):
     description: Response definition
@@ -69,10 +76,12 @@ definitions:
       status:
         description: Status code
         type: integer
+        readOnly: true
         format: int32
       message:
         description: Message relating to the response
         type: string
+        readOnly: true
   Response(Failed):
     description: Failed response
     type: object
@@ -83,7 +92,7 @@ definitions:
         description: Description of the response
         $ref: '#/definitions/Element(Response)'
   Response(Success):
-    description: Program response
+    description: Successful response
     type: object
     required:
       - response
