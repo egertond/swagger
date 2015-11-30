@@ -108,9 +108,15 @@ parameters:
     in: path
     required: true
     type: string
+  Header(auth):
+    name: auth
+    description: Authentication token passed in via header
+    in: header
+    required: false
+    type: string
   Query(auth):
     name: auth
-    description: Authentication token passed in
+    description: Authentication token passed in via query
     in: query
     required: false
     type: string
