@@ -206,37 +206,72 @@ paths:
         '404':
           description: Nothing found no matching program
           schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+            $ref: 'common.yaml#/definitions/Response(Failed)'
         '500':
           description: System error when trying to remove the program
           schema:
-            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Failed)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Metadata)'
 definitions:
-  Element(Program):
+  Element(ProgramSmry):
     description: Program definition
+    type: object
     required:
-      - status
-      - message
+      - code
     properties:
+      code:
+        description: Program code
+        type: string
+        pattern: '^[a-zA-Z0-9]{16}$'
+      description:
+        description: Program description
+        type: string
+        maxLength: 80
       status:
-        description: Status code
+        description: Status
         type: integer
         format: int32
-      message:
-        description: Message relating to the response
+      statusDescription:
+        description: Status description
         type: string
-        format: guid
-        pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
+        readOnly: true
+    additionalProperties:
+      description: Inherited properties from the Base object
+      $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Base)'
+  Element(ProgramFull):
+    description: Program definition
+    type: object
+    properties:
+      approved:
+        description: Date approved
+        type: string
+        format: datetime
+      closed:
+        description: Date closed
+        type: string
+        format: datetime
+      department:
+        description: Department code
+        type: integer
+        format: int32
+      departmentDescription:
+        description: Department description
+        type: string
+        readOnly: true
+    additionalProperties:
+      description: Inherited properties from the Program summary
+      $ref: '#/definitions/Element(ProgramSmry)'
   Request(Program):
     description: Program request
+    type: object
     required:
       - program
     properties:
       program:
         description: Description of the program
-        $ref: '#/definitions/Element(Program)'
+        $ref: '#/definitions/Element(ProgramFull)'
   Response(Program):
     description: Program response
+    type: object
     required:
       - response
     properties:
@@ -245,9 +280,10 @@ definitions:
         $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       program:
         description: Description of the program
-        $ref: '#/definitions/Element(Program)'
+        $ref: '#/definitions/Element(ProgramFull)'
   Response(Programs):
     description: Programs response
+    type: object
     required:
       - response
       - programs
@@ -257,4 +293,7 @@ definitions:
         $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Response)'
       programs:
         description: List of matching available programs
-        $ref: '#/definitions/Element(Program)'
+        type: array
+        minLength: 0
+        items:
+          $ref: '#/definitions/Element(ProgramSmry)'
