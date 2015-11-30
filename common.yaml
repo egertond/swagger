@@ -102,32 +102,32 @@ definitions:
     required:
       - response
 parameters:
-  auth:
-    name: auth
-    description: Authentication token passed in
-    in: query
-    required: false
-    type: string
-  id:
+  Path(id):
     name: id
     description: Object unique identifier reference
     in: path
     required: true
     type: string
+  Query(auth):
+    name: auth
+    description: Authentication token passed in
+    in: query
+    required: false
+    type: string
 responses:
-  '200':
+  Success(200):
     description: Successfully process the request
     schema:
       $ref: '#/definitions/Response(Success)'
-  '401':
+  Unauthorised(401):
     description: Unauthorised need to provided authentication before being able to perform operation
     schema:
       $ref: '#/definitions/Response(Failed)'
-  '403':
+  Forbidden(403):
     description: Forbidden access to retrieve the requested information
     schema:
       $ref: '#/definitions/Response(Failed)'
-  '500':
+  Error(500):
     description: System error when trying to retrieve the requested information
     schema:
       $ref: '#/definitions/Response(Failed)'
