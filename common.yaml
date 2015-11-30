@@ -30,16 +30,30 @@ definitions:
       message:
         description: Message relating to the response
         type: string
-      url:
-        description: Full URL path of the request
-        type: string
   Element(Metadata):
     description: Metadata definition
     required:
       - createdBy
+      - createdOn
+      - modifiedBy
+      - modifiedOn
     properties:
       createdBy:
         description: Created By
+        type: string
+      createdOn:
+        description: Created On
+        type: string
+        format: datetime
+      modifiedBy:
+        description: Created By
+        type: string
+      modifiedOn:
+        description: Created On
+        type: string
+        format: datetime
+      url:
+        description: Full URL path for the resource
         type: string
   Response(Failed):
     description: Failed response
