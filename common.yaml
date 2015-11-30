@@ -20,26 +20,10 @@ definitions:
     description: Metadata definition
     required:
       - createdBy
-      - createdOn
-      - modifiedBy
-      - modifiedOn
     properties:
       createdBy:
-        description: Status code
-        type: integer
-        format: int32
-      createdOn:
-        description: Message relating to the response
+        description: Created By
         type: string
-        format: datetime
-      modifiedBy:
-        description: Status code
-        type: integer
-        format: int32
-      modifiedOn:
-        description: Message relating to the response
-        type: string
-        format: datetime
   Element(Response):
     description: Response definition
     required:
