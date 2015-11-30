@@ -101,21 +101,20 @@ definitions:
         $ref: '#/definitions/Element(Response)'
     required:
       - response
-
 responses:
   '200':
     description: Successfully process the request
     schema:
       $ref: '#/definitions/Response(Success)'
   '401':
-    description: Unauthorised need to provided authentication before being able to retrieve the programs summary
+    description: Unauthorised need to provided authentication before being able to perform operation
     schema:
       $ref: '#/definitions/Response(Failed)'
   '403':
-    description: Forbidden access to retrieve the programs summary
+    description: Forbidden access to retrieve the requested information
     schema:
       $ref: '#/definitions/Response(Failed)'
   '500':
-    description: System error when trying to retrieve the programs summary
+    description: System error when trying to retrieve the requested information
     schema:
       $ref: '#/definitions/Response(Failed)'
