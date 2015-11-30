@@ -16,8 +16,8 @@ schemes:
   - https
 paths: {}
 definitions:
-  Element(BaseObject):
-    description: Object definition
+  Element(Base):
+    description: Base definition
     type: object
     required:
       - metadata
@@ -25,15 +25,15 @@ definitions:
       - id
     properties:
       metadata:
-        description: Base object metadata
+        description: Object metadata
         $ref: '#/definitions/Element(Metadata)'
       guid:
-        description: Base object global unique identifier (GUID)
+        description: Object global unique identifier (GUID)
         type: string
         format: guid
         pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
       id:
-        description: Base object System unique identifier
+        description: Object System unique identifier
         type: string
   Element(Metadata):
     description: Metadata definition
@@ -58,8 +58,10 @@ definitions:
       url:
         description: Full URL path for the resource
         type: string
+        pattern: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
   Element(Response):
     description: Response definition
+    type: object
     required:
       - status
       - message
