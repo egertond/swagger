@@ -16,6 +16,48 @@ schemes:
   - https
 paths: {}
 definitions:
+  Element(BaseObject):
+    description: Object definition
+    type: object
+    required:
+      - metadata
+      - guid
+      - id
+    properties:
+      metadata:
+        description: Base object metadata
+        $ref: '#/definitions/Element(Metadata)'
+      guid:
+        description: Base object global unique identifier (GUID)
+        type: string
+        format: guid
+        pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
+      id:
+        description: Base object System unique identifier
+        type: string
+  Element(Metadata):
+    description: Metadata definition
+    type: object
+    required:
+      - modifiedOn
+    properties:
+      createdBy:
+        description: Created By
+        type: string
+      createdOn:
+        description: Created On
+        type: string
+        format: datetime
+      modifiedBy:
+        description: Modified By
+        type: string
+      modifiedOn:
+        description: Modified On
+        type: string
+        format: datetime
+      url:
+        description: Full URL path for the resource
+        type: string
   Element(Response):
     description: Response definition
     required:
@@ -30,33 +72,9 @@ definitions:
       message:
         description: Message relating to the response
         type: string
-  Element(Metadata):
-    description: Metadata definition
-    required:
-      - createdBy
-      - createdOn
-      - modifiedBy
-      - modifiedOn
-    properties:
-      createdBy:
-        description: Created By
-        type: string
-      createdOn:
-        description: Created On
-        type: string
-        format: datetime
-      modifiedBy:
-        description: Created By
-        type: string
-      modifiedOn:
-        description: Created On
-        type: string
-        format: datetime
-      url:
-        description: Full URL path for the resource
-        type: string
   Response(Failed):
     description: Failed response
+    type: object
     required:
       - response
     properties:
@@ -65,6 +83,7 @@ definitions:
         $ref: '#/definitions/Element(Response)'
   Response(Success):
     description: Program response
+    type: object
     required:
       - response
     properties:
