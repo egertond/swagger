@@ -64,7 +64,7 @@ definitions:
         description: Full URL path for the resource
         type: string
         readOnly: true
-        pattern: "(https?:\\\\/\\\\/(?:www\\\\.|(?!www))[^\\\\s\\\\.]+\\\\.[^\\\\s]{2,}|www\\\\.[^\\\\s]+\\\\.[^\\\\s]{2,})"
+        pattern: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
     required:
       - modifiedOn
   Element(Response):
