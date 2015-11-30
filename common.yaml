@@ -19,84 +19,89 @@ definitions:
   Element(Base):
     description: Base definition
     type: object
-    required:
-      - metadata
-      - guid
-      - id
-    properties:
-      metadata:
-        description: Object metadata
-        $ref: '#/definitions/Element(Metadata)'
-      guid:
-        description: Object global unique identifier (GUID)
-        type: string
-        readOnly: true
-        format: guid
-        pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
-      id:
-        description: Object System unique identifier
-        type: string
-        readOnly: true
+    allOf:
+      - properties:
+          metadata:
+            description: Object metadata
+            $ref: '#/definitions/Element(Metadata)'
+          guid:
+            description: Object global unique identifier (GUID)
+            type: string
+            readOnly: true
+            format: guid
+            pattern: '^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$'
+          id:
+            description: Object System unique identifier
+            type: string
+            readOnly: true
+        required:
+          - metadata
+          - guid
+          - id
   Element(Metadata):
     description: Metadata definition
     type: object
-    required:
-      - modifiedOn
-    properties:
-      createdBy:
-        description: Created By
-        type: string
-        readOnly: true
-      createdOn:
-        description: Created On
-        type: string
-        readOnly: true
-        format: datetime
-      modifiedBy:
-        description: Modified By
-        type: string
-        readOnly: true
-      modifiedOn:
-        description: Modified On
-        type: string
-        readOnly: true
-        format: datetime
-      url:
-        description: Full URL path for the resource
-        type: string
-        readOnly: true
-        pattern: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
+    allOf:
+      - properties:
+          createdBy:
+            description: Created By
+            type: string
+            readOnly: true
+          createdOn:
+            description: Created On
+            type: string
+            readOnly: true
+            format: datetime
+          modifiedBy:
+            description: Modified By
+            type: string
+            readOnly: true
+          modifiedOn:
+            description: Modified On
+            type: string
+            readOnly: true
+            format: datetime
+          url:
+            description: Full URL path for the resource
+            type: string
+            readOnly: true
+            pattern: '(https?:\\/\\/(?:www\\.|(?!www))[^\\s\\.]+\\.[^\\s]{2,}|www\\.[^\\s]+\\.[^\\s]{2,})'
+        required:
+          - modifiedOn
   Element(Response):
     description: Response definition
     type: object
-    required:
-      - status
-      - message
-    properties:
-      status:
-        description: Status code
-        type: integer
-        readOnly: true
-        format: int32
-      message:
-        description: Message relating to the response
-        type: string
-        readOnly: true
+    allOf:
+      - properties:
+          status:
+            description: Status code
+            type: integer
+            readOnly: true
+            format: int32
+          message:
+            description: Message relating to the response
+            type: string
+            readOnly: true
+        required:
+          - status
+          - message
   Response(Failed):
     description: Failed response
     type: object
-    required:
-      - response
-    properties:
-      response:
-        description: Description of the response
-        $ref: '#/definitions/Element(Response)'
+    allOf:
+      - properties:
+          response:
+            description: Description of the response
+            $ref: '#/definitions/Element(Response)'
+        required:
+          - response
   Response(Success):
     description: Successful response
     type: object
-    required:
-      - response
-    properties:
-      response:
-        description: Description of the response
-        $ref: '#/definitions/Element(Response)'
+    allOf:
+      - properties:
+          response:
+            description: Description of the response
+            $ref: '#/definitions/Element(Response)'
+        required:
+          - response
