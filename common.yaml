@@ -16,19 +16,6 @@ schemes:
   - https
 paths: {}
 definitions:
-  Element(Base):
-    description: Base definition
-    type: object
-    required:
-      - guid
-      - id
-    properties:
-      guid:
-        description: Object global unique identifier (GUID)
-        type: string
-      id:
-        description: Object System unique identifier
-        type: string
   Element(Response):
     description: Response definition
     type: object
@@ -42,6 +29,19 @@ definitions:
         format: int32
       message:
         description: Message relating to the response
+        type: string
+  Element(Base):
+    description: Base definition
+    type: object
+    required:
+      - guid
+      - id
+    properties:
+      guid:
+        description: Object global unique identifier (GUID)
+        type: string
+      id:
+        description: Object System unique identifier
         type: string
   Response(Failed):
     description: Failed response
