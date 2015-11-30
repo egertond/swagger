@@ -63,7 +63,6 @@ definitions:
     required:
       - status
       - message
-      - url
     properties:
       status:
         description: Status code
