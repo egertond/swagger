@@ -141,3 +141,4 @@ responses:
     description: System error when trying to retrieve the requested information
     schema:
       $ref: '#/definitions/Response(failed)'
+
