@@ -20,7 +20,7 @@
     "schemes" : ["https"],
     "paths" : {},
     "definitions" : {
-        "Element(Base)" : {
+        "Element(base)" : {
             "description" : "Base definition",
             "discriminator" : "guid",
             "type" : "object",
@@ -40,7 +40,7 @@
                 }
             }
         },
-        "Element(Metadata)" : {
+        "Element(metadata)" : {
             "description" : "Metadata definition",
             "type" : "object",
             "required" : ["modifiedOn", "url"],
@@ -75,7 +75,7 @@
                 }
             }
         },
-        "Element(Response)" : {
+        "Element(response)" : {
             "description" : "Response definition",
             "type" : "object",
             "required" : ["status", "message"],
@@ -93,29 +93,29 @@
                 }
             }
         },
-        "Response(Failed)" : {
+        "Response(failed)" : {
             "description" : "Failed response",
             "type" : "object",
             "required" : ["response"],
             "properties" : {
                 "response" : {
                     "description" : "Status of the response",
-                    "$ref" : "#/definitions/Element(Response)"
+                    "$ref" : "#/definitions/Element(response)"
                 }
             }
         },
-        "Response(Success)" : {
+        "Response(success)" : {
             "description" : "Successful response",
             "type" : "object",
             "required" : ["response"],
             "properties" : {
                 "response" : {
                     "description" : "Status of the response",
-                    "$ref" : "#/definitions/Element(Response)"
+                    "$ref" : "#/definitions/Element(response)"
                 },
                 "metadata" : {
                     "description" : "Metadata about the object/request",
-                    "$ref" : "#/definitions/Element(Metadata)"
+                    "$ref" : "#/definitions/Element(metadata)"
                 }
             }
         }
@@ -147,31 +147,31 @@
         "Success(200)" : {
             "description" : "Successfully process the request",
             "schema" : {
-                "$ref" : "#/definitions/Response(Success)"
+                "$ref" : "#/definitions/Response(success)"
             }
         },
         "Unauthorised(401)" : {
             "description" : "Unauthorised need to provided authentication before being able to perform operation",
             "schema" : {
-                "$ref" : "#/definitions/Response(Failed)"
+                "$ref" : "#/definitions/Response(failed)"
             }
         },
         "Forbidden(403)" : {
             "description" : "Forbidden access to retrieve the requested information",
             "schema" : {
-                "$ref" : "#/definitions/Response(Failed)"
+                "$ref" : "#/definitions/Response(failed)"
             }
         },
         "NotFound(404)" : {
             "description" : "No matching record was found",
             "schema" : {
-                "$ref" : "#/definitions/Response(Failed)"
+                "$ref" : "#/definitions/Response(failed)"
             }
         },
         "Error(500)" : {
             "description" : "System error when trying to retrieve the requested information",
             "schema" : {
-                "$ref" : "#/definitions/Response(Failed)"
+                "$ref" : "#/definitions/Response(failed)"
             }
         }
     }
