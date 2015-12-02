@@ -25,19 +25,19 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
             $ref: '#/definitions/Response(events)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     put:
       tags:
         - Events
@@ -48,8 +48,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
         - $ref: '#/parameters/Body(events)'
       responses:
         '200':
@@ -57,11 +57,11 @@ paths:
           schema:
             $ref: '#/definitions/Response(events)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     delete:
       tags:
         - Events
@@ -71,19 +71,19 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
             $ref: '#/definitions/Response(events)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
   '/events/{queue}':
     get:
       tags:
@@ -95,8 +95,8 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/Path(queue)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
         - $ref: '#/parameters/Query(receipted)'
       responses:
         '200':
@@ -104,15 +104,15 @@ paths:
           schema:
             $ref: '#/definitions/Response(queue)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '404':
           description: No matching record was found
           schema:
             $ref: '#/definitions/Response(queue)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     delete:
       tags:
         - Events
@@ -123,19 +123,19 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/Path(queue)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
             $ref: '#/definitions/Response(queue)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
   '/events/{queue}/{id}':
     get:
       tags:
@@ -147,9 +147,9 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/Path(queue)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
         - $ref: '#/parameters/Query(receipt)'
       responses:
         '200':
@@ -157,13 +157,13 @@ paths:
           schema:
             $ref: '#/definitions/Response(message)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '404':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/NotFound(404)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/NotFound(404)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     delete:
       tags:
         - Events
@@ -174,23 +174,23 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/Path(queue)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
         - $ref: '#/parameters/Query(receipt)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(success)'
+            $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Response(success)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '404':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/NotFound(404)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/NotFound(404)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
 definitions:
   Element(message):
     description: Message definition
@@ -274,7 +274,7 @@ definitions:
     properties:
       response:
         description: Response definition
-        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Element(response)'
       preferences:
         description: List of preferences
         type: array
@@ -293,7 +293,7 @@ definitions:
     properties:
       response:
         description: Response definition
-        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Element(response)'
       message:
         description: Message definition
         $ref: '#/definitions/Element(message)'
@@ -304,7 +304,7 @@ definitions:
     properties:
       response:
         description: Events Response
-        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(response)'
+        $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Element(response)'
       queue:
         description: Current event queue
         $ref: '#/definitions/Element(queue)'
