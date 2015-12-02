@@ -25,19 +25,19 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Programs)'
+            $ref: '#/definitions/Response(programs)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     post:
       summary: Create new program
       operationId: createProgram
@@ -48,20 +48,20 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
-        - $ref: '#/parameters/Body(Program)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
+        - $ref: '#/parameters/Body(program)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Programs)'
+            $ref: '#/definitions/Response(programs)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
   '/programs/{id}':
     get:
       summary: Retrieve a program using the unique identifier
@@ -72,20 +72,20 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Program)'
+            $ref: '#/definitions/Response(program)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     put:
       summary: Update a program based on the unique identifier
       operationId: updateProgram
@@ -96,21 +96,21 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
-        - $ref: '#/parameters/Body(Program)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
+        - $ref: '#/parameters/Body(program)'
       responses:
         '200':
           description: Successfully processed the request
           schema:
-            $ref: '#/definitions/Response(Program)'
+            $ref: '#/definitions/Response(program)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
     delete:
       summary: Remove a program based on the unique identifier
       operationId: removeProgram
@@ -120,24 +120,24 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Path(id)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Header(auth)'
-        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/parameters/Query(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Path(id)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Header(auth)'
+        - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/parameters/Query(auth)'
       responses:
         '200':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Success(200)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Success(200)'
         '401':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Unauthorised(401)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Unauthorised(401)'
         '403':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Forbidden(403)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Forbidden(403)'
         '500':
-          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/responses/Error(500)'
+          $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/responses/Error(500)'
 definitions:
-  Element(ProgramFull):
+  Element(programfull):
     description: Program definition
     type: object
     allOf:
-      - $ref: '#/definitions/Element(ProgramSmry)'
+      - $ref: '#/definitions/Element(programsmry)'
       - properties:
           approved:
             description: Date approved
@@ -155,13 +155,13 @@ definitions:
             description: Department description
             type: string
             readOnly: true
-  Element(ProgramSmry):
+  Element(programsmry):
     description: Program definition
     type: object
     required:
       - code
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Element(Base)'
+      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Element(base)'
       - properties:
           code:
             description: Program code
@@ -179,7 +179,7 @@ definitions:
             description: Status description
             type: string
             readOnly: true
-  Request(Program):
+  Request(program):
     description: Program request
     type: object
     required:
@@ -187,37 +187,38 @@ definitions:
     properties:
       program:
         description: Description of the program
-        $ref: '#/definitions/Element(ProgramFull)'
-  Response(Program):
+        $ref: '#/definitions/Element(programfull)'
+  Response(program):
     description: Program response
     type: object
     required:
       - response
+      - program
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Success)'
+      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Response(success)'
       - properties:
           program:
             description: Description of the program
-            $ref: '#/definitions/Element(ProgramFull)'
-  Response(Programs):
+            $ref: '#/definitions/Element(programfull)'
+  Response(programs):
     description: Programs response
     type: object
     required:
       - response
       - programs
     allOf:
-      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.yaml#/definitions/Response(Success)'
+      - $ref: 'https://raw.githubusercontent.com/egertond/swagger/master/common.json#/definitions/Response(success)'
       - properties:
           programs:
             description: List of matching available programs
             type: array
             minLength: 0
             items:
-              $ref: '#/definitions/Element(ProgramSmry)'
+              $ref: '#/definitions/Element(programsmry)'
 parameters:
-  Body(Program):
+  Body(program):
     name: body
     in: body
     required: true
     schema:
-      $ref: '#/definitions/Request(Program)'
+      $ref: '#/definitions/Request(program)'
